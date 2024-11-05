@@ -81,7 +81,7 @@ def response(user_response):
         return bot_response
 
 
-print("Chatbot online")
+print("InfoBot is online")
 file_change = input("Use new data? ") #Only enter 'yes'
 if file_change.lower() == 'yes':
     url = input("Enter url: ")
@@ -90,30 +90,30 @@ else:
     fname = input("Enter data file name: ")
 with open(fname, 'r', encoding = 'UTF-8') as fh:
     raw = fh.read().lower() #reads the text file and converts it to lower case
-activate = input("Activate bats? ").lower() #Only enter 'yes'
+activate = input("Activate InfoBot?").lower() #Only enter 'yes'
 if activate == "yes":
-    print("Activating bats")
+    print("Activating...")
     sent_tokens = nltk.sent_tokenize(raw)
     word_tokens = nltk.word_tokenize(raw)
     flag=True
-    print("Bats: Hello, I am Bats and I will answer your queries. If you wish to exit, type Bye!")
+    print("InfoBot: Hello, My name is InfoBot and I'm here to answer your queries. If you wish to exit, type Bye!")
     while flag==True:
         user_response = input()
         user_response=user_response.lower()
         if user_response != 'bye':
             if greeting(user_response) != None:
-                    print("Bats: "+greeting(user_response))
+                    print("InfoBot: "+greeting(user_response))
             elif hospitality(user_response) != None:
-                    print("Bats: "+hospitality(user_response))
+                    print("InfoBot: "+hospitality(user_response))
             elif thanks(user_response) != None:
-                    print("Bats: "+thanks(user_response))
+                    print("InfoBot: "+thanks(user_response))
             else:
-                print("Bats: ", end="")
+                print("InfoBot: ", end="")
                 print(response(user_response))
                 sent_tokens.remove(user_response)
         else:
             flag=False
-            print("Bats: Bye")
-            print("Deactivating Bats")
+            print("InfoBot: Bye")
+            print("Deactivating InfoBot")
 else:
-    print("Bats not activated")
+    print("InfoBot not activated")
